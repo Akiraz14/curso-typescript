@@ -1,15 +1,13 @@
-import { getPokemon, getPokemon2 } from "./generics/get-pokemon";
+import { Pokemon } from "./decorators/Pokemon-class";
 
-getPokemon2("ho-oh")
-    .then(resp => console.log(resp))
-    .catch(err => console.error(err))
-    .finally(() => console.log("End of the call..."));
+const charmander = new Pokemon("Charmander");
 
-getPokemon(151)
-    .then(pokemon => {
-        console.log(pokemon.name);
-        console.log(pokemon.sprites.front_default);
-    })
-    .catch(err => console.error(err))
-    .finally(() => console.log("End of the call..."));
+// Adding a property to the prototype
+// (Pokemon.prototype as any).customName = "Pikachu";
 
+console.log(charmander);
+
+charmander.savePokemonToDB(-151);
+charmander.savePokemonToDB(151);
+
+charmander.publicApi = "https://google.com";
